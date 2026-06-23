@@ -1,0 +1,15 @@
+# Build artefacts
+build/
+/minidb
+*.dSYM/
+
+# Database files created at runtime
+data/
+*.db
+*.wal
+catalog.meta
+
+# Editor / OS noise
+.DS_Store
+*.o
+*.d
