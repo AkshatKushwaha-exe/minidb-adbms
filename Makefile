@@ -64,6 +64,12 @@ bench: src/bench_main.cpp $(BUILD)/libminidb.a
 	@echo "=================== running benchmarks ==================="
 	@./$(BUILD)/bench
 
+# Extension benchmark: LSM-tree vs B+ tree/heap storage.
+lsm-bench: benchmarks/lsm_benchmark.cpp $(BUILD)/libminidb.a
+	$(CXX) $(CXXFLAGS) benchmarks/lsm_benchmark.cpp -o $(BUILD)/lsm_bench $(BUILD)/libminidb.a $(LDFLAGS)
+	@echo "=============== running LSM vs B+Tree benchmark ==============="
+	@./$(BUILD)/lsm_bench
+
 clean:
 	rm -rf $(BUILD) minidb minidb.d minidb.dSYM
 	rm -rf data/*.db data/*.wal data/catalog.meta
